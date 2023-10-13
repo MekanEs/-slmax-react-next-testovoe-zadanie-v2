@@ -1,0 +1,49 @@
+.photoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.card {
+  width: 28%;
+  position: relative;
+  height: 290px;
+  list-style: none;
+  background-color: #d1c9be;
+}
+.image_div {
+  height: 250px;
+  position: relative;
+}
+
+.image {
+  position: relative;
+}
+.image_title {
+  position: absolute;
+  bottom: 0;
+}
+.favBtn {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.favoriteIcon {
+  filter: contrast(0.5);
+  transition: all 0.3s ease;
+}
+
+.favoriteIcon:hover {
+  transform: scale(1.2);
+}
+
+.active-favorite {
+  filter: contrast(1);
+}

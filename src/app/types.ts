@@ -1,1 +1,9 @@
-export const FAVORITES_KEY = 'favorite_images';
+export type responseType = {
+  photos: {
+    photo: {
+      title: string;
+      url_l: string;
+      id: string;
+    }[];
+  };
+} | null;

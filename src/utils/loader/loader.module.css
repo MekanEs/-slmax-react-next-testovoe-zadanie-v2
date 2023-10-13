@@ -1,6 +1,7 @@
 .container {
-  margin: 30% auto;
+  margin: 100px auto;
   width: fit-content;
+  flex: auto;
 }
 
 .lds-dual-ring {

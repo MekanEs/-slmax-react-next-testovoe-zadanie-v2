@@ -1,9 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { FAVORITES_KEY } from './types';
-import { useState } from 'react';
-import Header from './heade';
+
+import Header from './components/header/header';
+import { ContextProvider } from './components/provider/contextProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -15,9 +15,10 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // const [session, setSession] = useState(localStorage.getItem(FAVORITES_KEY) | []);
   return (
     <html lang='en'>
+      <link rel='shortcut icon' href='/fav_ico.png' />
       <body className={inter.className}>
         <Header />
-        {children}
+        <ContextProvider>{children}</ContextProvider>
       </body>
     </html>
   );
