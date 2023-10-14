@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useTags } from '../provider/useFavContext';

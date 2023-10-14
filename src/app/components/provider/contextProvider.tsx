@@ -14,14 +14,16 @@ export const ContextProvider: FC<{ children: React.ReactNode }> = ({ children })
   const [favs, setFavs] = useState<Photo[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   useEffect(() => {
-    const storedItems =
-      (user?.email && localStorage.getItem(user?.email)) || localStorage.getItem(FAVORITES_KEY);
+    if (localStorage) {
+      const storedItems =
+        (user?.email && localStorage.getItem(user?.email)) || localStorage.getItem(FAVORITES_KEY);
 
-    const storedTags = localStorage.getItem(STORED_TAGS);
-    setFavs(storedItems && JSON.parse(storedItems));
+      const storedTags = localStorage.getItem(STORED_TAGS);
+      storedItems && setFavs(JSON.parse(storedItems));
 
-    setTags(storedTags && JSON.parse(storedTags));
-  }, [user, localStorage]);
+      storedTags && setTags(JSON.parse(storedTags));
+    }
+  }, [user]);
 
   const defaultProviderValue = useMemo(
     () => ({
