@@ -18,6 +18,10 @@ const Tags: React.FC<tagsPropsType> = ({ setTag, currentTag }) => {
   useEffect(() => {
     if (tags && tags?.length > 0) localStorage.setItem(STORED_TAGS, JSON.stringify(tags));
   }, [tags]);
+
+  useEffect(() => {
+    localStorage.setItem('currentTag', currentTag);
+  }, [currentTag]);
   return (
     <div className={styles.container}>
       tags:
