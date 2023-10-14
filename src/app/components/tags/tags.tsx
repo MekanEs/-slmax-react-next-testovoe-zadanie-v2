@@ -22,6 +22,7 @@ const Tags: React.FC<tagsPropsType> = ({ setTag, currentTag }) => {
   useEffect(() => {
     localStorage.setItem('currentTag', currentTag);
   }, [currentTag]);
+
   return (
     <div className={styles.container}>
       tags:

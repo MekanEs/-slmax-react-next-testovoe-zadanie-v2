@@ -24,7 +24,7 @@ export default function Directory() {
     if (tag) {
       setTag(tag);
     }
-  }, []);
+  }, [currentTag]);
 
   let url = useRef(getcurrentURL());
   useEffect(() => {
