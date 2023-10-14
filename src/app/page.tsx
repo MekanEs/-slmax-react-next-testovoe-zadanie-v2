@@ -12,16 +12,18 @@ import Sort from './components/sort/sort';
 import { v4 as uuid } from 'uuid';
 import cx from 'classnames';
 export default function Directory() {
-  const [data, setData] = useState<responseType>(null);
+  const [data, setData] = useState<responseType>({ photos: { photo: [], total: 1 } });
   const [isLoading, setLoading] = useState(true);
   const [sort, setSort] = useState<string>('relevance');
   const [page, setPage] = useState<number>(1);
 
-  const [currentTag, setTag] = useState<string>('cat');
+  const [currentTag, setTag] = useState<string>('');
 
   useEffect(() => {
     const tag = localStorage.getItem('currentTag');
+
     if (tag) {
+      console.log('get tag from localStorage', tag);
       setTag(tag);
     }
   }, [currentTag]);

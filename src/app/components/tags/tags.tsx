@@ -20,7 +20,7 @@ const Tags: React.FC<tagsPropsType> = ({ setTag, currentTag }) => {
   }, [tags]);
 
   useEffect(() => {
-    localStorage.setItem('currentTag', currentTag);
+    if (currentTag !== '') localStorage.setItem('currentTag', currentTag);
   }, [currentTag]);
 
   return (

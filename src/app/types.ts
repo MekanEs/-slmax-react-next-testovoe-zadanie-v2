@@ -4,9 +4,11 @@ export type Photo = {
   id: string;
 };
 
-export type responseType = {
-  photos: {
-    photo: Photo[];
-    total: number;
-  };
-} | null;
+export type responseType =
+  | {
+      photos: {
+        photo: Photo[];
+        total: number;
+      };
+    }
+  | { photos: { photo: []; total: 1 } };
