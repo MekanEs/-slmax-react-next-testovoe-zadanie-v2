@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useContext } from 'react';
 import styles from './imageContainer.module.css';
 import Image from 'next/image';
@@ -14,7 +16,7 @@ const ImageContainer: React.FC<{ data: Photo[] }> = ({ data }) => {
   const { auth } = useContext(AuthContext);
   const [user] = useAuthState(auth);
   useEffect(() => {
-    if (localStorage) localStorage.setItem(user?.email || FAVORITES_KEY, JSON.stringify(favs));
+    localStorage.setItem(user?.email || FAVORITES_KEY, JSON.stringify(favs));
   }, [favs, user]);
 
   return (
