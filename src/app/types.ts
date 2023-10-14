@@ -7,5 +7,6 @@ export type Photo = {
 export type responseType = {
   photos: {
     photo: Photo[];
+    total: number;
   };
 } | null;

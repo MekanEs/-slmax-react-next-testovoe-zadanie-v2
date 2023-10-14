@@ -16,16 +16,11 @@ const Login: React.FC = () => {
 
   const router = useRouter();
 
-  console.log(auth && auth.currentUser);
   const login = async () => {
     if (auth)
-      await signInWithPopup(auth, provider)
-        .then((result) => {
-          console.log('Logged In', result);
-        })
-        .catch((error) => {
-          console.log('Caught error Popup closed', error);
-        });
+      await signInWithPopup(auth, provider).catch((error) => {
+        console.log(error);
+      });
 
     router.push('/');
   };

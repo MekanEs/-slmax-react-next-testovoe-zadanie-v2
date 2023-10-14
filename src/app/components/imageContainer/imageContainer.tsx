@@ -7,6 +7,7 @@ import cx from 'classnames';
 import { FAVORITES_KEY } from '../provider/favContext';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { AuthContext } from '../provider/AuthProvider';
+import { v4 as uuid } from 'uuid';
 const ImageContainer: React.FC<{ data: Photo[] }> = ({ data }) => {
   const { favs, updateFavs } = useFavs();
 
@@ -14,11 +15,11 @@ const ImageContainer: React.FC<{ data: Photo[] }> = ({ data }) => {
   const [user] = useAuthState(auth);
   useEffect(() => {
     localStorage.setItem(user?.email || FAVORITES_KEY, JSON.stringify(favs));
-  }),
-    [favs, user];
+  }, [favs, user]);
+
   return (
     <ul className={styles.photoContainer}>
-      {data.map((image) => {
+      {data.map((image, index) => {
         return (
           image.url_l && (
             <li key={image.id} className={styles.card}>

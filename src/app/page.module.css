@@ -13,3 +13,24 @@
   font-size: 14px;
   width: fit-content;
 }
+
+.pagination {
+  width: 50%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pagebtn {
+  padding: 5px;
+  font-size: 14px;
+  background-color: beige;
+  cursor: pointer;
+  align-items: flex-end;
+}
+.pageActive {
+  background-color: rgb(184, 184, 134);
+}
+.pagebtn:hover {
+  background-color: #8c8c50;
+}

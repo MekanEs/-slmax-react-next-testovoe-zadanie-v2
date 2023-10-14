@@ -21,16 +21,22 @@ const Tags: React.FC<tagsPropsType> = ({ setTag, currentTag }) => {
       tags:
       {tags?.map((el) => {
         return (
-          <button
+          <div
             className={cx(el === currentTag && styles.active, styles.tag)}
             onClick={() => setTag(el)}
             key={uuid()}
           >
             {el}
-            <button className={styles.deleteBtn} onClick={() => updateTags('delete', el)}>
+            <button
+              className={styles.deleteBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                updateTags('delete', el);
+              }}
+            >
               X
             </button>
-          </button>
+          </div>
         );
       })}
       <button onClick={() => setShowInput(!showInput)}>{showInput ? '-' : '+'}</button>
@@ -44,7 +50,9 @@ const Tags: React.FC<tagsPropsType> = ({ setTag, currentTag }) => {
         className={cx(showInput ? styles.tagInput : styles.hidden)}
         onClick={() => {
           updateTags('add', newInput);
+          setShowInput(false);
           setNewInput('');
+          setTag(newInput);
         }}
       >
         add

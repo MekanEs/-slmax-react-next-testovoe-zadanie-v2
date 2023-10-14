@@ -15,22 +15,3 @@ export const loadImages: callbacktype = (setData, setLoading, url) => {
       setLoading(false);
     });
 };
-
-export const UpdateData: callbacktype = (setData, setLoading, url) => {
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      setData((prev: responseType) => {
-        if (prev) {
-          return {
-            ...prev,
-            photos: { ...prev.photos, photo: [...prev.photos.photo, ...data.photos.photo] },
-          };
-        } else {
-          return data;
-        }
-      });
-
-      setLoading(false);
-    });
-};

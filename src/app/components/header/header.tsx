@@ -20,7 +20,6 @@ const Header: React.FC = () => {
           <button
             onClick={() => {
               auth && auth.signOut();
-              console.log(auth && auth.currentUser);
             }}
           >
             Logout
