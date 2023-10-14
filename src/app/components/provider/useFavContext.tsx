@@ -13,11 +13,9 @@ export function useTags(): useTagsRes {
     if (tags) {
       if (action === 'add') {
         setTags && setTags([...tags, tag]);
-        localStorage.setItem(STORED_TAGS, JSON.stringify([...tags, tag]));
       }
       if (action === 'delete') {
         setTags && setTags(tags?.filter((el) => el !== tag));
-        localStorage.setItem(STORED_TAGS, JSON.stringify(tags?.filter((el) => el !== tag)));
       }
     }
   };

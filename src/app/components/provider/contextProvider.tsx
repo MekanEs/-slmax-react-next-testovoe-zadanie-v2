@@ -12,7 +12,7 @@ export const ContextProvider: FC<{ children: React.ReactNode }> = ({ children })
   const [user] = useAuthState(auth);
 
   const [favs, setFavs] = useState<Photo[]>([]);
-  const [tags, setTags] = useState<string[]>(['dog', 'cat']);
+  const [tags, setTags] = useState<string[]>([]);
   useEffect(() => {
     if (localStorage) {
       const storedItems =
@@ -23,7 +23,7 @@ export const ContextProvider: FC<{ children: React.ReactNode }> = ({ children })
 
       setTags(storedTags && JSON.parse(storedTags));
     }
-  }, [user]);
+  }, [user, localStorage]);
 
   const defaultProviderValue = useMemo(
     () => ({
