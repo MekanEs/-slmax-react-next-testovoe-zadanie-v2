@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  background-color: #d4d1cc;
+  gap: 10px;
+  overflow-x: auto;
+  align-items: center;
+}
+
+.tag {
+  position: relative;
+  padding: 14px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.deleteBtn {
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(80, 80, 80);
+  top: -2px;
+  right: -5px;
+  padding: 3px;
+  position: absolute;
+  cursor: pointer;
+  color: #fff;
+}
+.active {
+  background-color: aquamarine;
+}
+.hidden {
+  display: none;
+}
+
+.tagInput {
+  padding: 5px;
+  border: 1px solid #fff;
+}

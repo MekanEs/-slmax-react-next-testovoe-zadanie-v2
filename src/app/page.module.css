@@ -3,4 +3,13 @@
   flex-direction: column;
   height: 100%;
   background-color: aliceblue;
+  align-items: center;
+  flex: auto;
+}
+
+.loadBtn {
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 14px;
+  width: fit-content;
 }

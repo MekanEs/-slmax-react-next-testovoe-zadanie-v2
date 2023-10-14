@@ -1,17 +1,23 @@
 'use client';
 
-import React, { FC, useMemo, useState } from 'react';
-import { AppContext, FAVORITES_KEY, STORED_TAGS, item } from './favContext';
+import React, { FC, useMemo, useState, useContext } from 'react';
+import { AppContext, FAVORITES_KEY, STORED_TAGS } from './favContext';
+import { Photo } from '@/app/types';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { AuthContext } from './AuthProvider';
 
 export const ContextProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
-  const storedItems = localStorage.getItem(FAVORITES_KEY);
+  const { auth } = useContext(AuthContext);
+  const [user] = useAuthState(auth);
+  const storedItems = localStorage.getItem(user?.email || FAVORITES_KEY);
   const storedTags = localStorage.getItem(STORED_TAGS);
-  const [favs, setFavs] = useState<item[]>((storedItems && JSON.parse(storedItems)) || []);
+
+  const [favs, setFavs] = useState<Photo[]>((storedItems && JSON.parse(storedItems)) || []);
   const [tags, setTags] = useState<string[]>(
     (storedTags && JSON.parse(storedTags)) || ['dog', 'cat'],
   );
 
-  const defaultPRoviderValue = useMemo(
+  const defaultProviderValue = useMemo(
     () => ({
       favs: favs,
       setFavs: setFavs,
@@ -20,5 +26,5 @@ export const ContextProvider: FC<{ children: React.ReactNode }> = ({ children })
     }),
     [favs, tags],
   );
-  return <AppContext.Provider value={defaultPRoviderValue}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={defaultProviderValue}>{children}</AppContext.Provider>;
 };

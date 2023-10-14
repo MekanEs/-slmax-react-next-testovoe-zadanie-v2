@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { AppContext, item } from './favContext';
+import { AppContext } from './favContext';
+import { Photo } from '@/app/types';
 
 interface useTagsRes {
   updateTags: (action: string, tag: string) => void;
@@ -23,13 +24,13 @@ export function useTags(): useTagsRes {
 }
 
 interface useFavsRes {
-  updateFavs: (action: string, item: item) => void;
-  favs: item[] | undefined;
+  updateFavs: (action: string, item: Photo) => void;
+  favs: Photo[] | undefined;
 }
 export function useFavs(): useFavsRes {
   const { favs, setFavs } = useContext(AppContext);
 
-  const updateFavs = (action: string, item: item) => {
+  const updateFavs = (action: string, item: Photo) => {
     if (favs) {
       if (action === 'add') {
         setFavs && setFavs([...favs, item]);

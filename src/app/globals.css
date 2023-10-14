@@ -10,7 +10,10 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
-
+body {
+  display: flex;
+  flex-direction: column;
+}
 a {
   color: inherit;
   text-decoration: none;

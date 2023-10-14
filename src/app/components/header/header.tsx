@@ -2,15 +2,33 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import styles from './header.module.css';
-const Header = () => {
-  const path = usePathname();
-  console.log(path);
+import { AuthContext, authProject } from '../provider/AuthProvider';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+const Header: React.FC = () => {
+  const { auth } = useContext(AuthContext);
+  const [user] = useAuthState(auth);
   return (
     <header className={styles.header}>
       <Link href='/'>Main</Link> <Link href='/favorites'>Favorites</Link>
+      {user ? (
+        <>
+          <p>{user.email}</p>
+
+          <button
+            onClick={() => {
+              auth && auth.signOut();
+              console.log(auth && auth.currentUser);
+            }}
+          >
+            Logout
+          </button>
+        </>
+      ) : (
+        <Link href='/login'>Login</Link>
+      )}
     </header>
   );
 };
