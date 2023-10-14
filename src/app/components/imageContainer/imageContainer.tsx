@@ -14,7 +14,7 @@ const ImageContainer: React.FC<{ data: Photo[] }> = ({ data }) => {
   const { auth } = useContext(AuthContext);
   const [user] = useAuthState(auth);
   useEffect(() => {
-    localStorage.setItem(user?.email || FAVORITES_KEY, JSON.stringify(favs));
+    if (localStorage) localStorage.setItem(user?.email || FAVORITES_KEY, JSON.stringify(favs));
   }, [favs, user]);
 
   return (

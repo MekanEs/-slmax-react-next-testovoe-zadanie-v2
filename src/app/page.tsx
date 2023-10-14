@@ -16,7 +16,15 @@ export default function Directory() {
   const [isLoading, setLoading] = useState(true);
   const [sort, setSort] = useState<string>('relevance');
   const [page, setPage] = useState<number>(1);
-  const [currentTag, setTag] = useState<string>(localStorage.getItem('currentTag') || 'cat');
+
+  const [currentTag, setTag] = useState<string>('cat');
+
+  useEffect(() => {
+    const tag = localStorage.getItem('currentTag');
+    if (tag) {
+      setTag(tag);
+    }
+  }, []);
 
   let url = useRef(getcurrentURL());
   useEffect(() => {

@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { AppContext } from './favContext';
+import { useContext, useEffect } from 'react';
+import { AppContext, STORED_TAGS } from './favContext';
 import { Photo } from '@/app/types';
 
 interface useTagsRes {
@@ -13,9 +13,11 @@ export function useTags(): useTagsRes {
     if (tags) {
       if (action === 'add') {
         setTags && setTags([...tags, tag]);
+        localStorage.setItem(STORED_TAGS, JSON.stringify([...tags, tag]));
       }
       if (action === 'delete') {
         setTags && setTags(tags?.filter((el) => el !== tag));
+        localStorage.setItem(STORED_TAGS, JSON.stringify(tags?.filter((el) => el !== tag)));
       }
     }
   };

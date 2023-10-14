@@ -13,9 +13,7 @@ const Tags: React.FC<tagsPropsType> = ({ setTag, currentTag }) => {
   const { tags, updateTags } = useTags();
   const [showInput, setShowInput] = useState(false);
   const [newInput, setNewInput] = useState('');
-  useEffect(() => {
-    localStorage.setItem(STORED_TAGS, JSON.stringify(tags));
-  }, [tags]);
+
   return (
     <div className={styles.container}>
       tags:
